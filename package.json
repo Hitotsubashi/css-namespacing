@@ -4,7 +4,8 @@
   "description": "A function to add a namespace to a class name.",
   "main": "src/index.js",
   "scripts": {
-    "test": "jest"
+    "test:unit": "jest",
+    "test:file": "node ./tests/file/index.js"
   },
   "repository": {
     "type": "git",
