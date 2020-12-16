@@ -52,6 +52,22 @@ describe('attribute-selector expect class', () => {
     `;
     expect(namespace(before)).toEqual(after);
   });
+
+  test('value with "{}" in attribute selector', () => {
+    const before = `
+    .box[title="{box2}"] .box3[title=box4] input[title~='{box5}']
+    {
+      border:5px solid blue;
+    }
+    `;
+    const after = `
+    .cst-box[title="{box2}"] .cst-box3[title=box4] input[title~='{box5}']
+    {
+      border:5px solid blue;
+    }
+    `;
+    expect(namespace(before)).toEqual(after);
+  });
 });
 
 describe(('class-attribute-selector'), () => {
