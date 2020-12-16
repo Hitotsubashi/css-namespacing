@@ -12,7 +12,7 @@ $ npm install css-namespacing --save-dev
 
 ## Usage
 
-```console
+```javascript
 const namespacing = require("css-namespacing")
 const before=`
   .box .box1{
@@ -38,7 +38,7 @@ Also ,you can find some CSS files being namespacing in my [tests:file](https://g
 **(1) code with attribute selector**
 
 before namespacing:
-```console
+```css
 .box[class="box2"] .box3[class=box4] input[class~='box5']
 {
   border:5px solid blue;
@@ -47,7 +47,7 @@ before namespacing:
 .planet[moons=abc][class="warning important"] {color:red;}
 ```
 after namespacing:
-```console
+```css
 .cst-box[class="cst-box2"] .cst-box3[class="cst-box4"] input[class~="cst-box5"]
 {
   border:5px solid blue;
@@ -59,7 +59,7 @@ after namespacing:
 **(2) code with annotation**
 
 before namespacing:
-```console
+```css
 /*!
 * blabla....
 * blabla...
@@ -85,7 +85,7 @@ html {
 }
 ```
 after namespacing:
-```console
+```css
 /*!
 * blabla....
 * blabla...
