@@ -31,7 +31,7 @@ console.log(after)
 // }
 ```
 ## Availability
-Here shows some tests of namespacing.
+Here shows some complex tests of namespacing.
 If you want to read more tests to check if it works, read my [tests:unit](https://github.com/Hitotsubashi/css-namespacing/tree/master/tests/unit) directory.
 Also ,you can find some CSS files being namespacing in my [tests:file](https://github.com/Hitotsubashi/css-namespacing/tree/master/tests/file) directory.
 
@@ -46,6 +46,7 @@ before namespacing:
 
 .planet[moons=abc][class="warning important"] {color:red;}
 ```
+
 after namespacing:
 ```css
 .cst-box[class="cst-box2"] .cst-box3[class="cst-box4"] input[class~="cst-box5"]
@@ -84,6 +85,7 @@ html {
   margin-left: auto;
 }
 ```
+
 after namespacing:
 ```css
 /*!
@@ -111,6 +113,27 @@ html {
 }
 ```
 
+**(3) code with pesudo-class**
+
+before namespacing:
+```css
+@media screen and (max-width: 300.5px) {
+  body .box :not(.crazy, .fancy) {
+    font-family: sans-serif;
+    font-size: .5em
+  }
+}
+```
+
+after namespacing:
+```css
+@media screen and (max-width: 300.5px) {
+  body .cst-box :not(.cst-crazy, .cst-fancy) {
+    font-family: sans-serif;
+    font-size: .5em
+  }
+}
+```
 ## Options
 |           Name            |                   Type                    |   Default   | Description     |
 | :-------------: | :---------------------------------------: | :---------: | :-------------- |
