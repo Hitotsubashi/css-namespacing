@@ -3,7 +3,9 @@
   "version": "1.0.2",
   "description": "A function to add a namespace to a class name.",
   "main": "src/index.js",
-  "files": ["src/*"],
+  "files": [
+    "src/*"
+  ],
   "scripts": {
     "test:unit": "jest",
     "test:file": "node ./tests/file/index.js"

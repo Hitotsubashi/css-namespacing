@@ -3,7 +3,7 @@ const AttributeselectorHandler = require('./attributeseletor-handler');
 const UrlHandler = require('./url-handler');
 
 const PROPERTY_LINE_REG = '\\s*[a-z-\\s]+:[^;]+;\\s*';
-const PROPERTY__LAST_LINE_REG = '\\s*[a-z-\\s]+:[^\\}\\/]+';
+const PROPERTY__LAST_LINE_REG = '\\s*[a-z-\\s]+:[^\\}]+';
 const CLASS_NAME = '\\.[^@\\{;\\}]+';
 const REG = new RegExp(`(${CLASS_NAME})(\\{\\s*?((${AnnotaionHandler.ANNO_MARK})*${PROPERTY_LINE_REG}(${AnnotaionHandler.ANNO_MARK})*)*?(${PROPERTY__LAST_LINE_REG})?(${AnnotaionHandler.ANNO_MARK})*\\})`, 'gm');
 
