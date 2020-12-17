@@ -1,8 +1,9 @@
 {
   "name": "css-namespacing",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A function to add a namespace to a class name.",
   "main": "src/index.js",
+  "files": ["src/*"],
   "scripts": {
     "test:unit": "jest",
     "test:file": "node ./tests/file/index.js"
@@ -13,6 +14,7 @@
   },
   "keywords": [
     "css",
+    "namespace",
     "namespacing",
     "selector"
   ],

@@ -33,7 +33,7 @@ console.log(after)
 ## Availability
 Here shows some complex tests of namespacing.
 If you want to read more tests to check if it works, read my [tests:unit](https://github.com/Hitotsubashi/css-namespacing/tree/master/tests/unit) directory.
-Also ,you can find some CSS files being namespacing in my [tests:file](https://github.com/Hitotsubashi/css-namespacing/tree/master/tests/file) directory.
+Also ,you can find some CSS files being namespacing from my [tests:file](https://github.com/Hitotsubashi/css-namespacing/tree/master/tests/file) directory.
 
 **(1) code with attribute selector**
 

@@ -19,6 +19,12 @@ const processClass = function processClass(source, prefix) {
 };
 
 const namespacing = function namespacing(source, prefix = 'cst-') {
+  if (typeof source !== 'string') {
+    throw new Error('source should be a type of string');
+  }
+  if (typeof prefix !== 'string') {
+    throw new Error('source should be a type of string');
+  }
   const annoHandler = new AnnotaionHandler();
   const attrseleHandler = new AttributeselectorHandler();
   let result = annoHandler.collectAnno(source);
