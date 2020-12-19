@@ -1,6 +1,7 @@
 const AnnotaionHandler = require('./annotation-handler');
 const AttributeselectorHandler = require('./attributeseletor-handler');
 const QuotesHandler = require('./quotes-handler.js');
+const nameHandler = require('./name-handler');
 
 const PROPERTY_LINE_REG = '\\s*[a-z-\\s]+:[^;]+;\\s*';
 const PROPERTY__LAST_LINE_REG = '\\s*[a-z-\\s]+:[^\\}]+';
@@ -19,7 +20,8 @@ const processClass = function processClass(source, prefix) {
   return result;
 };
 
-const namespacing = function namespacing(source, prefix = 'cst-') {
+const namespacing = function namespacing(source,prefix='', options) {
+  let {prefix}
   if (typeof source !== 'string') {
     throw new Error('source should be a type of string');
   }
