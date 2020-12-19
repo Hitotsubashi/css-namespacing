@@ -1,6 +1,6 @@
 const AnnotaionHandler = require('./annotation-handler');
 const AttributeselectorHandler = require('./attributeseletor-handler');
-const UrlHandler = require('./url-handler');
+const QuotesHandler = require('./quotes-handler.js');
 
 const PROPERTY_LINE_REG = '\\s*[a-z-\\s]+:[^;]+;\\s*';
 const PROPERTY__LAST_LINE_REG = '\\s*[a-z-\\s]+:[^\\}]+';
@@ -28,12 +28,12 @@ const namespacing = function namespacing(source, prefix = 'cst-') {
   }
   const annoHandler = new AnnotaionHandler();
   const attrseleHandler = new AttributeselectorHandler();
-  const urlHandler = new UrlHandler();
+  const quotesHandler = new QuotesHandler();
   let result = annoHandler.collectAnno(source);
   result = attrseleHandler.collectAttr(result);
-  result = urlHandler.collectUrl(result);
+  result = quotesHandler.collectUrl(result);
   result = processClass(result, prefix);
-  result = urlHandler.resetUrl(result);
+  result = quotesHandler.resetUrl(result);
   result = attrseleHandler.resetAttr(result, prefix);
   result = annoHandler.resetAnno(result);
   return result;

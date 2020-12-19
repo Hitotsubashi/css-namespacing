@@ -1,7 +1,7 @@
 const namespace = require('@/index');
 
-describe('url()', () => {
-  test('complex value in url', () => {
+describe('function', () => {
+  test('url', () => {
     const before = `
     .form-control:valid{
       border-color:#28a745;
@@ -10,6 +10,10 @@ describe('url()', () => {
       background-repeat:no-repeat;
       background-position:right calc(.375em + .1875rem) center;
       background-size:calc(.75em + .375rem) calc(.75em + .375rem)
+    }
+
+    .form:root{
+      background: url(".form{}")
     }
     `;
     const after = `
@@ -20,6 +24,24 @@ describe('url()', () => {
       background-repeat:no-repeat;
       background-position:right calc(.375em + .1875rem) center;
       background-size:calc(.75em + .375rem) calc(.75em + .375rem)
+    }
+
+    .cst-form:root{
+      background: url(".form{}")
+    }
+    `;
+    expect(namespace(before)).toEqual(after);
+  });
+
+  test('attr', () => {
+    const before = `
+    .form::before{
+      content:"("attr(data-class)")"
+    }
+    `;
+    const after = `
+    .cst-form::before{
+      content:"("attr(data-class)")"
     }
     `;
     expect(namespace(before)).toEqual(after);
