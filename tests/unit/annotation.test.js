@@ -1,4 +1,4 @@
-const AnnotationHandler = require('@/annotation-handler');
+const AnnotationHandler = require('@/handler/annotation-handler');
 const namespace = require('@/index');
 
 describe('annotaion-check', () => {
