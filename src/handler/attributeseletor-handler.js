@@ -18,21 +18,7 @@ function AttributeselectorHandler() {
       (mark) => this.record[mark].replace(
         /\[(class.?=)['"]?([^'"\]]*?)['"]?\]/gm,
         (object, left, right) => {
-          // let modifiedRight = right;
-          // modifiedRight = modifiedRight.split(/\s+/).map((el) => `${prefix}${el}`).join(' ');
-          // return `[${left}"${modifiedRight}"]`;
-
           const classnames = right.split(/\s+/);
-          // if (isOnly) {
-          //   classnames = classnames.filter((classname) =>
-          //  only.some((val) => val.test(classname)));
-          // } else if (Array.isArray(not)) {
-          //   classnames = classnames.filter(
-          //     (classname) => !not.some(
-          //       (val) => val.test(classname),
-          //     ),
-          //   );
-          // }
           const modifiedRight = classnames.map((classname) => {
             if (only) restoreLastIndex(only);
             if (not) restoreLastIndex(not);
