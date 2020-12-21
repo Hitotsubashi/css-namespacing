@@ -1,6 +1,6 @@
 {
   "name": "css-namespacing",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "A function to add a namespace to a class name.",
   "main": "src/index.js",
   "files": [
