@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 const namespace = require('@/index');
 
 describe('pesudo-class', () => {
