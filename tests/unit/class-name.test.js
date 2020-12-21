@@ -73,12 +73,18 @@ describe('class-name', () => {
 
   test('not in el-*', () => {
     before = `
-      .box el-input{
+      .box .el-input{
+
+      }
+      .box2 .el-form{
 
       }
     `;
     after = `
-      .cst-box el-input{
+      .cst-box .el-input{
+
+      }
+      .cst-box2 .el-form{
 
       }
     `;
