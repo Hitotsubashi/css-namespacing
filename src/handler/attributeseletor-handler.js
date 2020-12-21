@@ -1,4 +1,4 @@
-const { restoreLastIndex } = require('@/utils');
+const { restoreLastIndex } = require('../utils');
 
 function AttributeselectorHandler() {
   this.recordIndex = 0;

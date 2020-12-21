@@ -1,4 +1,4 @@
-const { restoreLastIndex } = require('@/utils');
+const { restoreLastIndex } = require('../utils');
 
 function NameHandler() {
   this.NAME_REG = /\.([\w-]+)/gm;
