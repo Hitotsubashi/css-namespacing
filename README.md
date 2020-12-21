@@ -1,6 +1,6 @@
 # css-namespacing
 
-The `css-namespacing` allows add a namespace to specified class names.
+`css-namespacing` allows you to quickly and precisely add the named namespace to the classname specified in the CSS code
 
 ## Getting Started
 
@@ -35,7 +35,7 @@ console.log(after)
  * /
 ```
 
-2.If you define `not` in `option`, it skips some classnames that match the regular expression in `not`. ***Note: The element in not must be a regular expression.***
+2.If you define `not` in `option`, it skips some classnames that match the regular expression in `not`. ***Note: The element in `not` must be a regular expression.***
 
 ```javascript
 const namespacing = require("css-namespacing")
@@ -56,7 +56,7 @@ console.log(after)
  * /
 ```
 
-3.If you define `only` in `option`, it adds a namespace to only those classnames that match the regular expression in `only`.***Note: If both `only` and `not` are defined in `options`, only will have a higher priority.***
+3.If you define `only` in `option`, it adds a namespace to only those classnames that match the regular expression in `only`.***Note: If both `only` and `not` are defined in `options`, `only` will have a higher priority.***
 
 ```javascript
 const namespacing = require("css-namespacing")
@@ -69,6 +69,7 @@ const before=`
 const after=namespacing(before,{only: [/box2/, /box4/], not: [/box3/, /box4/] })
 console.log(after)
 /**
+ * output:
  * .box1,.cst-box2 .box3+.cst-box4,
  * .box5~.box6 .box7[class="box8 box9"]{
  *
@@ -190,22 +191,23 @@ after namespacing:
 Type: `Object` Default: `{}`
 
 
-### option.namespace
-Type:`String` Default:`cst-`
+- option.namespace
 
-The namespace to prefix
+  Type:`String` Default:`cst-`
 
-### option.not
+  The namespace to prefix
 
-Type:`Array<RegExp>` Default:`undefined`
+- option.not
 
-The classname that is not be prefixed with namespace
+  Type:`Array<RegExp>` Default:`undefined`
 
-### option.only
+  The classname that is not be prefixed with namespace
 
-Type:`Array<RegExp>` Default:`undefined`
+- option.only
 
-Only the classname of the namespace will be added, and the classname that is not matched by a regular expression in `only` will not be added
+  Type:`Array<RegExp>` Default:`undefined`
+
+  Only the classname of the namespace will be added, and the classname that is not matched by a regular expression in `only` will not be added
 
 ## License
 
