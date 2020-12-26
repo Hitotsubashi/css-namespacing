@@ -1,4 +1,4 @@
-const { restoreLastIndex } = require('../utils');
+// const { restoreLastIndex } = require('../utils');
 
 function AttributeselectorHandler() {
   this.recordIndex = 0;
@@ -20,8 +20,8 @@ function AttributeselectorHandler() {
         (object, left, right) => {
           const classnames = right.split(/\s+/);
           const modifiedRight = classnames.map((classname) => {
-            if (only) restoreLastIndex(only);
-            if (not) restoreLastIndex(not);
+            // if (only) restoreLastIndex(only);
+            // if (not) restoreLastIndex(not);
             if (isOnly) {
               const onlyContainsClassname = only.some((val) => val.test(classname));
               if (onlyContainsClassname) {
