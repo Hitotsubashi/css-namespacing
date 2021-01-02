@@ -13,7 +13,6 @@ function setOption(option) {
     option[key] = option[key] || value;
   });
 }
-const validateOption = require('./validate');
 
 const PROPERTY_LINE_REG = '\\s*[a-z-\\s]+:[^;]+;\\s*';
 const PROPERTY__LAST_LINE_REG = '\\s*[a-z-\\s]+:[^\\}]+';
@@ -33,7 +32,6 @@ const processClass = function processClass(source, option) {
 };
 
 const namespacing = function namespacing(source, option = {}) {
-  validateOption(option);
   setOption(option);
   const annoHandler = new AnnotaionHandler();
   const attrseleHandler = new AttributeselectorHandler();

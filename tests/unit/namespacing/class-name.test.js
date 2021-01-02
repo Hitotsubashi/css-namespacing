@@ -21,6 +21,16 @@ describe('class-name', () => {
     expect(result).toEqual(['.box1', '.box2', '.box3', '.box4']);
   });
 
+  test('set namespace', () => {
+    before = `
+    .box{}
+    `;
+    after = `
+    .bsp-box{}
+    `;
+    expect(namespacing(before, { namespace: 'bsp-' })).toEqual(after);
+  });
+
   test('not', () => {
     before = `
       .box1,.box2 .box3+.box4,
