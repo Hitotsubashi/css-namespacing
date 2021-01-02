@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const namespacing = require('../../src/index.js');
+const namespacing = require('../../src/namespacing.js');
 
 const originDirName = 'origin';
 const modifiedDirName = 'modified';

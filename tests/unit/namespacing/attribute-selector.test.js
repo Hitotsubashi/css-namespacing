@@ -1,5 +1,5 @@
 /* eslint-disable import/no-unresolved */
-const namespace = require('@/index');
+const namespace = require('@/namespacing');
 
 describe('attribute-selector expect class', () => {
   test('attribute-selector', () => {
