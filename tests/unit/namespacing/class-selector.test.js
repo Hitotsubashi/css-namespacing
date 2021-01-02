@@ -1,5 +1,5 @@
 /* eslint-disable import/no-unresolved */
-const namespace = require('@/index');
+const namespace = require('@/namespacing');
 
 describe('class-selector', () => {
   test('normal class selector', () => {

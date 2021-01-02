@@ -8,7 +8,7 @@ module.exports = {
   coverageDirectory: 'coverage',
   testEnvironment: 'node',
   testMatch: [
-    '<rootDir>/tests/unit/*.test.js',
+    '<rootDir>/tests/unit/*/*.test.js',
   ],
   transform: {
     '^.+\\.js$': '<rootDir>/node_modules/babel-jest',

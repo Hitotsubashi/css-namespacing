@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
 const AnnotationHandler = require('@/handler/annotation-handler');
-const namespace = require('@/index');
+const namespace = require('@/namespacing');
 
 describe('annotaion-check', () => {
   let annotationHandler;

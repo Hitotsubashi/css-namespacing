@@ -1,5 +1,3 @@
-// const { restoreLastIndex } = require('../utils');
-
 function NameHandler() {
   this.NAME_REG = /\.([\w-]+)/gm;
 
@@ -7,8 +5,6 @@ function NameHandler() {
     const { namespace, not, only } = option;
     const isOnly = Array.isArray(only) && only.length;
     return classname.replace(this.NAME_REG, (object, name) => {
-      // if (only) restoreLastIndex(only);
-      // if (not) restoreLastIndex(not);
       if (isOnly) {
         const onlyContainsName = only.some((el) => el.test(name));
         if (onlyContainsName) {
