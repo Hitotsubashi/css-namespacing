@@ -2,6 +2,19 @@
 const ns = require('@/index.js');
 
 describe('at-rules', () => {
+  test('normal use', () => {
+    const before = `
+    @namespacing prefix('my-') not([/box2/])
+    .box{}
+    .box2{}
+    `;
+    const after = `
+    .my-box{}
+    .box2{}
+    `;
+    expect(ns(before)).toEqual(after);
+  });
+
   test('at-rules without option', () => {
     const before = `
     .box{
@@ -75,6 +88,23 @@ describe('at-rules', () => {
     .cst-box{}
     `;
     expect(ns(before, { not: [/box2/] })).toEqual(after);
+  });
+
+  test('only', () => {
+    const before = `
+    .box{}
+    .box2{}
+    @namespacing only([/box2/])
+    .box{}
+    .box2{}
+    `;
+    const after = `
+    .cst-box{}
+    .box2{}
+    .cst-box{}
+    .cst-box2{}
+    `;
+    expect(ns(before, { only: [/^box$/] })).toEqual(after);
   });
 
   test('with not and only', () => {

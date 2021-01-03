@@ -77,110 +77,27 @@ console.log(after)
  * /
 ```
 
+4.Support at-rules.You can also define `namespace` or `only` or `not` in your css code with `@namespacing` atrule.If you want to learn more about this usage of `@namespacing`,check [here](#AtRule:@namespacing).
+```javascript
+const namespacing = require("css-namespacing")
+const before=`
+  @namespacing prefix('my-') not([/box2/])
+  .box{}
+  .box2{}
+`
+const after=namespacing(before)
+console.log(after)
+/**
+ * output:
+ * .my-box{}
+ * .box2{}
+ * /
+```
+
 ## Availability
-Here shows some complex tests of namespacing.
 If you want to read more tests to check if it works, read my [tests:unit](https://github.com/Hitotsubashi/css-namespacing/tree/master/tests/unit) directory.
 Also ,you can find some CSS files being namespacing from my [tests:file](https://github.com/Hitotsubashi/css-namespacing/tree/master/tests/file) directory.
 
-**(1) code with attribute selector**
-
-before namespacing:
-```css
-.box[class="box2"] .box3[class=box4] input[class~='box5']
-{
-  border:5px solid blue;
-}
-
-.planet[moons=abc][class="warning important"] {color:red;}
-```
-
-after namespacing:
-```css
-.cst-box[class="cst-box2"] .cst-box3[class="cst-box4"] input[class~="cst-box5"]
-{
-  border:5px solid blue;
-}
-
-.cst-planet[moons=abc][class="cst-warning cst-important"] {color:red;}
-```
-
-**(2) code with annotation**
-
-before namespacing:
-```css
-/*!
-* blabla....
-* blabla...
-*/
-html {
-  box-sizing: border-box; //bla..
-  -ms-overflow-style: scrollbar; 
-}
-/* check-check */
-/* check-check */
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-/* check-check */
-.container {
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-```
-
-after namespacing:
-```css
-/*!
-* blabla....
-* blabla...
-*/
-html {
-  box-sizing: border-box; //bla..
-  -ms-overflow-style: scrollbar; 
-}
-/* check-check */
-/* check-check */
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-/* check-check */
-.cst-container {
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-```
-
-**(3) code with pesudo-class**
-
-before namespacing:
-```css
-@media screen and (max-width: 300.5px) {
-  body .box :not(.crazy, .fancy) {
-    font-family: sans-serif;
-    font-size: .5em
-  }
-}
-```
-
-after namespacing:
-```css
-@media screen and (max-width: 300.5px) {
-  body .cst-box :not(.cst-crazy, .cst-fancy) {
-    font-family: sans-serif;
-    font-size: .5em
-  }
-}
-```
 ## Options
 |Name| Type |Default|Description|Necessary|
 |:---:|:-----: | :---: | :------: |:---:|
@@ -209,6 +126,88 @@ Type: `Object` Default: `{}`
 
   Only the classname of the namespace will be added, and the classname that is not matched by a regular expression in `only` will not be added
 
+## AtRule:@namespacing
+
+1.You can define `prefix` after `@namespacing` to change in the namespace prefix, this value has higher priority than the `namespace` defined in the `option`.
+
+```javascript
+const namespacing = require("css-namespacing")
+const before=`
+  .box[title=W3School]
+  {
+    border:5px solid blue;
+  }
+  @namespacing prefix('my1-')
+  .box1{
+    font-size:1.5em;
+  }
+  @namespacing prefix('my2-')
+  .box2{
+    line-height:1.5;
+  }
+`
+const after=namespacing(before,{namespace:'my-'})
+console.log(after)
+/**
+ * output:
+ * .my-box[title=W3School]
+ *  {
+ *    border:5px solid blue;
+ *  }
+ *  .my1-box1{
+ *    font-size:1.5em;
+ *   }
+ *  .my2-box2{
+ *    line-height:1.5;
+ *  }
+ * /
+```
+
+2.You can also define `not` or `only` after `@namespacing` ,The `only` and `not` in the @namespacing are merged with the `only` and `not` arrays in the `option`, respectively.***Note: The data structure of `not` and `only` here are the same as in `option`***
+
+
+
+```javascript
+const namespacing = require("css-namespacing")
+const before=`
+  .box{}
+  .box2{}
+  @namespacing not([/box3/])
+  .box3{}
+  .box{}
+  .box2{}
+`
+const after=namespacing(before,{ not: [/box2/] })
+console.log(after)
+/**
+ * output:
+ * .cst-box{}
+ * .box2{}
+ * .box3{}
+ * .cst-box{}
+ * .box2{}
+ * /
+```
+
+```javascript
+const namespacing = require("css-namespacing")
+const before=`
+  .box{}
+  .box2{}
+  @namespacing only([/box2/])
+  .box{}
+  .box2{}
+`
+const after=namespacing(before,{ only: [/^box$/]})
+console.log(after)
+/**
+ * output:
+ * .cst-box{}
+ * .box2{}
+ * .cst-box{}
+ * .cst-box2{}
+ * /
+```
 ## License
 
 [MIT](./LICENSE)
