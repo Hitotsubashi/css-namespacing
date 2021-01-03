@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const namespacing = require('../../src/namespacing.js');
+const ns = require('../../src/index.js');
 
 const originDirName = 'origin';
 const modifiedDirName = 'modified';
@@ -26,6 +26,6 @@ function writeFile(filename, data) {
 const files = getFileList();
 files.forEach(async (filename) => {
   let data = await readFile(filename);
-  data = namespacing(data);
+  data = ns(data);
   writeFile(filename, data);
 });
