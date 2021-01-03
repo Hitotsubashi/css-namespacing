@@ -4,6 +4,9 @@ const ns = require('@/index.js');
 describe('at-rules', () => {
   test('at-rules without option', () => {
     const before = `
+    .box{
+      font-weight:500;
+    }
     @namespacing
     .box[title=W3School]
     {
@@ -11,6 +14,9 @@ describe('at-rules', () => {
     }
     `;
     const after = `
+    .cst-box{
+      font-weight:500;
+    }
     .cst-box[title=W3School]
     {
       border:5px solid blue;
@@ -29,6 +35,10 @@ describe('at-rules', () => {
     .box1{
       font-size:1.5em;
     }
+    @namespacing prefix('my2-')
+    .box2{
+      line-height:1.5;
+    }
     `;
     const after = `
     .my-box[title=W3School]
@@ -38,7 +48,60 @@ describe('at-rules', () => {
     .my1-box1{
       font-size:1.5em;
     }
+    .my2-box2{
+      line-height:1.5;
+    }
     `;
     expect(ns(before, { namespace: 'my-' })).toEqual(after);
+  });
+
+  test('with not', () => {
+    const before = `
+    .box{}
+    .box2{}
+    @namespacing not([/box./])
+    .box3{}
+    .box{}
+    @namespacing
+    .box3{}
+    .box{}
+    `;
+    const after = `
+    .cst-box{}
+    .box2{}
+    .box3{}
+    .cst-box{}
+    .cst-box3{}
+    .cst-box{}
+    `;
+    expect(ns(before, { not: [/box2/] })).toEqual(after);
+  });
+
+  test('with not and only', () => {
+    const before = `
+    .form{}
+    .form1{}
+    .control-form{}
+    @namespacing not([/control-form1/]) only([/control-.*/])
+    .form2{}
+    .control-form1{}
+    .control-row{}
+    @namespacing only([/main/])
+    .main{}
+    .control-form1{}
+    .control-row{}
+    `;
+    const after = `
+    .cst-form{}
+    .cst-form1{}
+    .control-form{}
+    .form2{}
+    .cst-control-form1{}
+    .cst-control-row{}
+    .cst-main{}
+    .control-form1{}
+    .control-row{}
+    `;
+    expect(ns(before, { not: [/control-.*/] })).toEqual(after);
   });
 });

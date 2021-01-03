@@ -36,8 +36,8 @@ function divide(content, option) {
   sections.forEach((section) => {
     const result = getResult(section);
     result.option.namespace = result.option.namespace || option.namespace;
-    result.option.not.concat(option.not);
-    result.option.only.concat(option.only);
+    if (option.not) { result.option.not = result.option.not.concat(option.not); }
+    if (option.only) { result.option.only = result.option.only.concat(option.only); }
     results.push(result);
   });
   return results;
