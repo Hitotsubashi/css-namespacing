@@ -18,7 +18,9 @@
     "css",
     "namespace",
     "namespacing",
-    "selector"
+    "selector",
+    "prefix",
+    "classname"
   ],
   "author": "Hitotsubashi",
   "license": "MIT",
