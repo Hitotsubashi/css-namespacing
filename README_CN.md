@@ -1,20 +1,18 @@
 # css-namespacing
 
-`css-namespacing` allows you to quickly and precisely add the named namespace to the classname specified in the CSS code
+`css-namespacing` 插件可以让你更快更准确地给CSS代码中指定的类添加命名空间
 
-[中文版文档](./README_CN.md)
+## 入门
 
-## Getting Started
-
-To begin, you'll need to install `css-namespacing`:
+开始之前，你要先通过npm安装 `css-namespacing`:
 
 ```console
 $ npm install css-namespacing --save-dev
 ```
 
-## Usage
+## 用法
 
-1.Define `namespace` in `option`,and you can prefix all classnames with specified namspace .
+1.通过在`option`对象中定义`namespace`的值,你可以给所有的类名添加指定的命名空间前缀.
 
 ```javascript
 const namespacing = require("css-namespacing")
@@ -37,7 +35,7 @@ console.log(after)
  * /
 ```
 
-2.If you define `not` in `option`, it skips some classnames that match the regular expression in `not`. ***Note: The element in `not` must be a regular expression.***
+2.通过定义`option`中的`not`，可以对与`not`中的正则表达式符合的类名进行过滤，被过滤的类名不会被添加前缀。***注意: `not`数组的元素类型必须是正则表达式.***
 
 ```javascript
 const namespacing = require("css-namespacing")
@@ -58,7 +56,7 @@ console.log(after)
  * /
 ```
 
-3.If you define `only` in `option`, it adds a namespace to only those classnames that match the regular expression in `only`.***Note: If both `only` and `not` are defined in `options`, `only` will have a higher priority.***
+3.通过定义`option`中的`only`，可以只对`only`中指定类名添加命名空间.***注意: 如果 `only` 和 `not` 都被定义了, `only` 会有更高的优先级.***
 
 ```javascript
 const namespacing = require("css-namespacing")
@@ -79,7 +77,7 @@ console.log(after)
  * /
 ```
 
-4.Support at-rules.You can also define `namespace` or `only` or `not` in your css code with `@namespacing` atrule.If you want to learn more about this usage of `@namespacing`,check [here](#AtRule).
+4.支持注解@规则.你也可以在CSS代码中通过`@namespacing`中定义上述的`namespace` 和 `only` 以及 `not`.如果你想了解关于`@namespacing`的更多用法,请查看 [这里](#注解).
 
 ```javascript
 const namespacing = require("css-namespacing")
@@ -97,42 +95,41 @@ console.log(after)
  * /
 ```
 
-## Availability
-If you want to read more tests to check if it works, read my [tests:unit](https://github.com/Hitotsubashi/css-namespacing/tree/master/tests/unit) directory.
+## 有效性
+如果你通过查看更多测试用例去确定其有效性，可点击此[tests:unit](https://github.com/Hitotsubashi/css-namespacing/tree/master/tests/unit) 文件夹.
+另外，你也可以通过[tests:file](https://github.com/Hitotsubashi/css-namespacing/tree/master/tests/file) 文件夹去对比看转化前后的CSS文件.
 
-In addition, you can compare the CSS files before and after conversion in the [tests:file](https://github.com/Hitotsubashi/css-namespacing/tree/master/tests/file) directory.
-
-## Function parameters
-|Name| Type |Default|Description|Necessary|
+## 函数参数
+|名称| 类型 |默认值|描述|是否必须|
 |:---:|:-----: | :---: | :------: |:---:|
-|**`data`**|`{String}`|`undefined`| The CSS code string you want to add namespace with  |`true`|
-| **[`option`](#option)** | `{String}` |    `{}`   | The options of namespacing  |`false`|
+|**`data`**|`{String}`|`undefined`| 你要添加命名空间的CSS代码字符串  |`true`|
+| **[`option`](#option)** | `{String}` |    `{}`   | 命名空间配置  |`false`|
 
 ### option
-Type: `Object` Default: `{}`
+类型: `Object` 默认值: `{}`
 
 
 - option.namespace
 
-  Type:`String` Default:`cst-`
+  类型:`String` 默认值:`cst-`
 
-  The namespace to prefix
+  命名空间前缀
 
 - option.not
 
-  Type:`Array<RegExp>` Default:`undefined`
+  类型:`Array<RegExp>` 默认值:`undefined`
 
-  The classname that is not be prefixed with namespace
+  被数组中的正则表达式匹配的类名不会被添加命名空间
 
 - option.only
 
-  Type:`Array<RegExp>` Default:`undefined`
+  类型:`Array<RegExp>` 默认值:`undefined`
 
-  Only the classname of the namespace will be added, and the classname that is not matched by a regular expression in `only` will not be added
+  只有数组中的正则表达式匹配的类名才会被添加命名空间
 
-## AtRule
+## 注解
 
-1.You can define `prefix` after `@namespacing` to change in the namespace prefix, this value has higher priority than the `namespace` defined in the `option`.
+1.你可以在`@namespacing`后面定义`prefix`的值，该值的作用与`option`中的`namespace`一样且有更高的优先级
 
 ```javascript
 const namespacing = require("css-namespacing")
@@ -167,7 +164,7 @@ console.log(after)
  * /
 ```
 
-2.You can also define `not` or `only` after `@namespacing` ,The `only` and `not` in the `@namespacing` are merged with the `only` and `not` arrays in the `option`, respectively.***Note: The data structure of `not` and `only` here are the same as in `option`***
+2.你也可以定义`@namespacing`后面定义 `not` 和 `only`  ,此处的 `only` 和 `not` 会分别与 `option`中的`only` 和 `not` 合并.***注意: 此处 `not` 和 `only` 的数据结构与在`option`中的`not`和`only`一致***
 
 
 
@@ -213,8 +210,8 @@ console.log(after)
  * /
 ```
 
-## Support Webpack
-See [css-namespacing-loader](https://github.com/Hitotsubashi/css-namespacing-loader).
+## 支持 Webpack
+查看 [css-namespacing-loader](https://github.com/Hitotsubashi/css-namespacing-loader).
 ## License
 
 [MIT](./LICENSE)
