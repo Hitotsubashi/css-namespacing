@@ -2,6 +2,8 @@
 
 `css-namespacing` allows you to quickly and precisely add the named namespace to the classname specified in the CSS code
 
+[中文版文档](./README_CN.md)
+
 ## Getting Started
 
 To begin, you'll need to install `css-namespacing`:
@@ -77,7 +79,8 @@ console.log(after)
  * /
 ```
 
-4.Support at-rules.You can also define `namespace` or `only` or `not` in your css code with `@namespacing` atrule.If you want to learn more about this usage of `@namespacing`,check [here](#AtRule:@namespacing).
+4.Support at-rules.You can also define `namespace` or `only` or `not` in your css code with `@namespacing` atrule.If you want to learn more about this usage of `@namespacing`,check [here](##AtRule:@namespacing).
+
 ```javascript
 const namespacing = require("css-namespacing")
 const before=`
@@ -208,6 +211,9 @@ console.log(after)
  * .cst-box2{}
  * /
 ```
+
+## Support Webpack
+See [css-namespacing-loader](https://github.com/Hitotsubashi/css-namespacing-loader).
 ## License
 
 [MIT](./LICENSE)
