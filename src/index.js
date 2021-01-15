@@ -1,15 +1,24 @@
 const divide = require('./divide');
-const namespacing = require('./namespacing');
+const segmentProcess = require('./segment-process');
 const validateOption = require('./validate');
 const AnnotaionHandler = require('./handler/annotation-handler');
+const { flow } = require('./utils');
+
+function handleSegments(segments) {
+  return segments.map((result) => segmentProcess(result.source, result.option));
+}
 
 const ns = function ns(source, option = {}) {
   validateOption(option);
   const annoHandler = new AnnotaionHandler();
-  const handledSource = annoHandler.collectAnno(source);
-  const results = divide(handledSource, option);
-  const handledSections = results.map((result) => namespacing(result.source, result.option));
-  return annoHandler.resetAnno(handledSections.join(''));
+  const transform = flow([
+    annoHandler.collectAnno,
+    (handledSource) => divide(handledSource, option),
+    handleSegments,
+    (segments) => segments.join(''),
+    annoHandler.resetAnno,
+  ]);
+  return transform(source);
 };
 
 module.exports = ns;

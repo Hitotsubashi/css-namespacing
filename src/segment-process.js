@@ -2,6 +2,7 @@ const AnnotaionHandler = require('./handler/annotation-handler');
 const AttributeselectorHandler = require('./handler/attributeseletor-handler');
 const QuotesHandler = require('./handler/quotes-handler.js');
 const nameHandler = require('./handler/name-handler');
+const { flow } = require('./utils');
 
 const DEFAULT_OPTION = {
   namespace: 'cst-',
@@ -31,19 +32,23 @@ const processClass = function processClass(source, option) {
   return result;
 };
 
-const namespacing = function namespacing(source, option = {}) {
+const segmentProcess = function segmentProcess(source, option = {}) {
   setOption(option);
-  // const annoHandler = new AnnotaionHandler();
   const attrseleHandler = new AttributeselectorHandler();
   const quotesHandler = new QuotesHandler();
-  // let result = annoHandler.collectAnno(source);
-  let result = attrseleHandler.collectAttr(source);
-  result = quotesHandler.collectUrl(result);
-  result = processClass(result, option);
-  result = quotesHandler.resetUrl(result);
-  result = attrseleHandler.resetAttr(result, option);
-  // result = annoHandler.resetAnno(result);
-  return result;
+  // let result = attrseleHandler.collectAttr(source);
+  // result = quotesHandler.collectUrl(result);
+  // result = processClass(result, option);
+  // result = quotesHandler.resetUrl(result);
+  // result = attrseleHandler.resetAttr(result, option);
+  const transform = flow([
+    attrseleHandler.collectAttr,
+    quotesHandler.collectUrl,
+    (data) => processClass(data, option),
+    quotesHandler.resetUrl,
+    (data) => attrseleHandler.resetAttr(data, option),
+  ]);
+  return transform(source);
 };
 
-module.exports = namespacing;
+module.exports = segmentProcess;
