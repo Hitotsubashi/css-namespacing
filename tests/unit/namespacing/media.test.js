@@ -1,5 +1,5 @@
 /* eslint-disable import/no-unresolved */
-const namespace = require('@/namespacing');
+const namespace = require('@/index');
 
 describe('Media Types', () => {
   test('media', () => {

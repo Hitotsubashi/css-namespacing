@@ -33,16 +33,16 @@ const processClass = function processClass(source, option) {
 
 const namespacing = function namespacing(source, option = {}) {
   setOption(option);
-  const annoHandler = new AnnotaionHandler();
+  // const annoHandler = new AnnotaionHandler();
   const attrseleHandler = new AttributeselectorHandler();
   const quotesHandler = new QuotesHandler();
-  let result = annoHandler.collectAnno(source);
-  result = attrseleHandler.collectAttr(result);
+  // let result = annoHandler.collectAnno(source);
+  let result = attrseleHandler.collectAttr(source);
   result = quotesHandler.collectUrl(result);
   result = processClass(result, option);
   result = quotesHandler.resetUrl(result);
   result = attrseleHandler.resetAttr(result, option);
-  result = annoHandler.resetAnno(result);
+  // result = annoHandler.resetAnno(result);
   return result;
 };
 

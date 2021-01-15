@@ -1,7 +1,7 @@
 /* eslint-disable import/no-unresolved */
 import nameHandler from '@/handler/name-handler';
 
-const namespacing = require('@/namespacing');
+const namespacing = require('@/index');
 
 describe('class-name', () => {
   let name;
