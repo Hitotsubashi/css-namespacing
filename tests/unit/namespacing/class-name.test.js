@@ -1,5 +1,5 @@
 /* eslint-disable import/no-unresolved */
-import nameHandler from '@/handler/name-handler';
+const nameHandler = require('@/handler/name-handler').default;
 
 const namespacing = require('@/index');
 

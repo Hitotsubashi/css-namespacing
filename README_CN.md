@@ -117,13 +117,13 @@ console.log(after)
 
 - option.not
 
-  类型:`Array<RegExp>` 默认值:`undefined`
+  类型:`Array<RegExp>` 默认值:`[]`
 
   被数组中的正则表达式匹配的类名不会被添加命名空间
 
 - option.only
 
-  类型:`Array<RegExp>` 默认值:`undefined`
+  类型:`Array<RegExp>` 默认值:`[]`
 
   只有数组中的正则表达式匹配的类名才会被添加命名空间
 

@@ -1,5 +1,6 @@
 /* eslint-disable import/no-unresolved */
-const AnnotationHandler = require('@/handler/annotation-handler');
+const AnnotationHandler = require('@/handler/annotation-handler').default;
+
 const namespace = require('@/index');
 
 describe('annotaion-check', () => {

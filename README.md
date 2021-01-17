@@ -120,13 +120,13 @@ Type: `Object` Default: `{}`
 
 - option.not
 
-  Type:`Array<RegExp>` Default:`undefined`
+  Type:`Array<RegExp>` Default:`[]`
 
   The classname that is not be prefixed with namespace
 
 - option.only
 
-  Type:`Array<RegExp>` Default:`undefined`
+  Type:`Array<RegExp>` Default:`[]`
 
   Only the classname of the namespace will be added, and the classname that is not matched by a regular expression in `only` will not be added
 

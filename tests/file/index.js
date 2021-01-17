@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const ns = require('../../src/index.js');
+const ns = require('../../dist/index.js');
 
 const originDirName = 'origin';
 const modifiedDirName = 'modified';
