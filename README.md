@@ -2,7 +2,7 @@
 
 `css-namespacing` allows you to quickly and precisely add the named namespace to the classname specified in the CSS code
 
-[中文版文档](./README_CN.md)
+[中文版文档](https://github.com/Hitotsubashi/css-namespacing/blob/master/README_CN.md)
 
 ## Getting Started
 
