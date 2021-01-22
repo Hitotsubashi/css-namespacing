@@ -214,7 +214,12 @@ console.log(after)
 ```
 
 ## Support Webpack
+
 See [css-namespacing-loader](https://github.com/Hitotsubashi/css-namespacing-loader).
+
+## Support Gulp
+
+See [gulp-css-namespacing](https://github.com/Hitotsubashi/gulp-css-namespacing).
 ## License
 
 [MIT](./LICENSE)

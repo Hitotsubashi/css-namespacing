@@ -212,6 +212,9 @@ console.log(after)
 
 ## 支持 Webpack
 查看 [css-namespacing-loader](https://github.com/Hitotsubashi/css-namespacing-loader).
+
+## 支持 Gulp
+查看 [gulp-css-namespacing](https://github.com/Hitotsubashi/gulp-css-namespacing).
 ## License
 
 [MIT](./LICENSE)
