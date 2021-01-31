@@ -3,28 +3,38 @@ module.exports = {
   env: {
     node: true,
   },
-  extends: [
-    'airbnb',
-  ],
-  parserOptions: {
-    parser: 'babel-eslint',
-  },
+  // extends: [
+  //   'airbnb',
+  //   'plugin:@typescript-eslint/recommended',
+  // ],
+  // parser: '@typescript-eslint/parser',
+  // parserOptions: {
+  //   parser: 'babel-eslint',
+  // },
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'linebreak-style': ['off', 'windows'],
+    'no-console':  'warn' ,
+    'no-debugger':  'warn' ,
     'no-eval': ['off'],
-    // 'import/no-unresolved': 'off',
   },
   overrides: [
     {
       files: [
-        '**/__tests__/*.{j,t}s?(x)',
-        '**/tests/unit/**/*.test.{j,t}s?(x)',
+        '**/tests/**',
       ],
       env: {
         jest: true,
       },
+      parserOptions: {
+        parser: 'babel-eslint',
+      },
+      extends: ['airbnb'],
+    },
+    {
+      files: ['*.ts', '*.tsx'],
+      parserOptions: {
+        parser: '@typescript-eslint/parser',
+      },
+      extends: ['plugin:@typescript-eslint/recommended'],
     },
   ],
 };

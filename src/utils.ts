@@ -7,4 +7,4 @@ export function flow(fns:Array<Function> = []):Function {
       return fn.apply(null, pre);
     }, args);
   };
-};
+}

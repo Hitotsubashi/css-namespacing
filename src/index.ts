@@ -6,28 +6,28 @@ import { flow } from './utils';
 
 const DEFAULT_OPTION:Option = {
   namespace: 'cst-',
-  not:[],
-  only:[]
+  not: [],
+  only: [],
 };
 
-function setOption(option:object):Option {
-  const handledOption={...option}
+function setOption(option:Record<string,unknown>):Option {
+  const handledOption = {  };
   Object.entries(DEFAULT_OPTION).forEach(([key, value]) => {
     /* eslint-disable-next-line */
     handledOption[key] = option[key] || value;
   });
-  return <Option>handledOption
+  return <Option>handledOption;
 }
 
 function handleSegments(segments:Array<Segment>):Array<Segment> {
   return segments.map((segment) => segmentProcess(segment.source, segment.option));
 }
 
-const ns = function ns(source:string, inputOption:object = {}):string {
+const ns = function ns(source:string, inputOption:Record<string,unknown>):string {
   validateOption(inputOption);
-  const option:Option=setOption(inputOption);
+  const option:Option = setOption(inputOption);
   const annoHandler = new AnnotaionHandler();
-  const transform:Function = flow([
+  const transform:(source:string)=>string = flow([
     annoHandler.collectAnno,
     (handledSource:string) => divide(handledSource, option),
     handleSegments,
@@ -37,4 +37,4 @@ const ns = function ns(source:string, inputOption:object = {}):string {
   return transform(source);
 };
 
-module.exports =ns;
+module.exports = ns;

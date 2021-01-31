@@ -14,6 +14,6 @@ declare interface HandlerRecord{
 }
 
 declare interface SchemaCheck{
-  schema:object
-  config:object
+  schema:Record<string,unknown>
+  config:Record<string,unknown>
 }

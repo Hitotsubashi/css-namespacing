@@ -156,6 +156,7 @@ describe('annotation-handle', () => {
       margin-left: auto; /*.123*/
     }
     `;
+    console.log(111);
     expect(namespace(before)).toEqual(after);
   });
 });
